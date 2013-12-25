@@ -1,10 +1,11 @@
 'use strict';
-var util = require('util');
-var path = require('path');
-var yeoman = require('yeoman-generator');
+var util = require('util')
+  ,path = require('path')
+  ,yeoman = require('yeoman-generator')
+  ,BeeweeGenerator;
 
 
-var BeeweeGenerator = module.exports = function BeeweeGenerator(args, options, config) {
+BeeweeGenerator = module.exports = function BeeweeGenerator(args, options, config) {
   yeoman.generators.Base.apply(this, arguments);
 
   this.on('end', function () {
@@ -23,12 +24,18 @@ BeeweeGenerator.prototype.askFor = function askFor() {
   console.log(this.yeoman);
 
   var prompts = [{
-    name: 'name',
-    message: 'What will you name your new project?'
+    name: 'name'
+    ,message: 'What will you name your new project?'
+  }, {
+    type: 'confirm'
+    ,name: 'inuit'
+    ,message: 'Would you like to include Inuit.css?'
+    ,default: true
   }];
 
   this.prompt(prompts, function (props) {
     this.name = props.name;
+    this.inuit = props.inuit;
 
     cb();
   }.bind(this));
@@ -40,6 +47,10 @@ BeeweeGenerator.prototype.app = function app() {
   this.mkdir('app/scss');
   this.mkdir('app/img');
   this.mkdir('app/js');
+
+  if ( this.inuit === true ) {
+    this.directory('inuit.css', 'app/scss/inuit.css');
+  }
 
   this.template('_package.json', 'package.json');
   this.template('_bower.json', 'bower.json');
