@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # generator-beewee [![Build Status](https://secure.travis-ci.org/bwasilewski/generator-beewee.png?branch=master)](https://travis-ci.org/bwasilewski/generator-beewee)
 
 A generator for [Yeoman](http://yeoman.io).
@@ -45,3 +46,9 @@ If you'd like to get to know Yeoman better and meet some of his friends, [Grunt]
 ## License
 
 [MIT License](http://en.wikipedia.org/wiki/MIT_License)
+=======
+generator-beewee
+================
+
+A generator for static websites.
+>>>>>>> 43c072f0b4aa8630a59bc20014ee1bc5e06c5509
