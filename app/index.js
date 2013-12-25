@@ -23,31 +23,32 @@ BeeweeGenerator.prototype.askFor = function askFor() {
   console.log(this.yeoman);
 
   var prompts = [{
-    projectName: 'name',
+    name: 'name',
     message: 'What will you name your new project?'
   }];
 
   this.prompt(prompts, function (props) {
-    this.projectName = props.projectName;
+    this.name = props.name;
 
     cb();
   }.bind(this));
 };
 
 BeeweeGenerator.prototype.app = function app() {
-  // this.mkdir('app');
-  // this.mkdir('app/templates');
-  this.mkdir('source');
-  this.mkdir('source/scss');
-  this.mkdir('source/img');
-  this.mkdir('source/js');
+
+  this.mkdir('app');
+  this.mkdir('app/scss');
+  this.mkdir('app/img');
+  this.mkdir('app/js');
 
   this.template('_package.json', 'package.json');
   this.template('_bower.json', 'bower.json');
   this.template('_index.html', 'app/index.html');
+
 };
 
 BeeweeGenerator.prototype.projectfiles = function projectfiles() {
+  this.copy('Gruntfile.js', 'Gruntfile.js');
   this.copy('editorconfig', '.editorconfig');
   this.copy('jshintrc', '.jshintrc');
   this.copy('bowerrc', '.bowerrc');
