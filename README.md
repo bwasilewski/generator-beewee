@@ -1,4 +1,4 @@
-# generator-beewee [![Build Status](https://secure.travis-ci.org/bwasilewski/generator-beewee.png?branch=master)](https://travis-ci.org/bwasilewski/generator-beewee)
+# generator-beewee 
 
 A generator for [Yeoman](http://yeoman.io).
 
