@@ -95,6 +95,21 @@ BeeweeGenerator.prototype.editorConfig = function editorConfig () {
   this.copy('editorconfig', '.editorconfig');
 }
 
+BeeweeGenerator.prototype.inuit = function inuit () {
+  this.directory('inuit.css', 'app/scss/inuit.css');
+}
+
+BeeweeGenerator.prototype.modernizr = function modernizr () {
+  // If the user requires modernizr, copy it over
+  if ( this.modernizr === true ) {
+    this.directory('modernizr', 'app/js/lib/vendor/modernizr');
+  }
+}
+
+BeeweeGenerator.prototype.index = function index () {
+  this.template('_index.html', 'app/index.html');
+}
+
 BeeweeGenerator.prototype.app = function app() {
 
   // Create project directories
@@ -102,15 +117,6 @@ BeeweeGenerator.prototype.app = function app() {
   this.mkdir('app/scss');
   this.mkdir('app/img');
   this.mkdir('app/js');
-
-  this.directory('inuit.css', 'app/scss/inuit.css');
-
-  // If the user requires modernizr, copy it over
-  if ( this.modernizr === true ) {
-    this.directory('modernizr', 'app/js/lib/vendor/modernizr');
-  }
-
-  this.template('_index.html', 'app/index.html');
 };
 
 BeeweeGenerator.prototype.install = function install () {
