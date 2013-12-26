@@ -41,12 +41,12 @@ module.exports = function (grunt) {
    ,watch: {
 
       gruntfile: {
-        files: '<%%= jshint.gruntfile.src %>'
+        files: '<%= jshint.gruntfile.src %>'
        ,tasks: ['jshint:gruntfile']
       }
 
      ,generator: {
-        files: '<%%= jshint.generator.src %>'
+        files: '<%= jshint.generator.src %>'
        ,tasks: ['jshint:generator']
       }
     }
