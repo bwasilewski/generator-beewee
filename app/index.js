@@ -71,7 +71,7 @@ BeeweeGenerator.prototype.askFor = function askFor() {
 };
 
 BeeweeGenerator.prototype.gruntfile = function gruntfile () {
-  this.template('Gruntfile.js');
+  this.copy('Gruntfile.js');
 }
 
 BeeweeGenerator.prototype.packageJSON = function packageJSON () {
