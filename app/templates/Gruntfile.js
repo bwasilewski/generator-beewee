@@ -11,12 +11,13 @@ module.exports = function (grunt) {
     jshint: {
       options: {
         jshintrc: true
+       ,reporter: require('jshint-stylish')
       }
      ,gruntfile: {
         src: 'Gruntfile.js'
       }
      ,app: {
-        src: ['app/js/**/*.js']
+        src: ['app/js/{,*/}*.js']
       }
     }
 
