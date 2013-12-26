@@ -6,10 +6,17 @@ module.exports = function (grunt) {
   grunt.initConfig({
     // Task configuration.
     copy: {
-      app: {
+      inuit: {
         expand: true
        ,cwd: 'bower_components/'
        ,src: 'inuit.css/**'
+       ,dest: 'app/templates/'
+      }
+
+     ,modernizr: {
+        expand: true
+       ,cwd: 'bower_components/'
+       ,src: 'modernizr/**'
        ,dest: 'app/templates/'
       }
     }
@@ -50,5 +57,4 @@ module.exports = function (grunt) {
 
   // Default task.
   grunt.registerTask('default', ['jshint', 'watch']);
-
 };
