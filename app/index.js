@@ -58,20 +58,6 @@ BeeweeGenerator.prototype.askFor = function askFor() {
    }]
   }];
 
-  // var prompts = [{
-  //   name: 'name'
-  //   ,message: 'The name of your project:'
-  // }, {
-  //   type: 'confirm'
-  //   ,name: 'inuit'
-  //   ,message: 'Will you be using Inuit.css?'
-  //   ,default: true
-  // }, {
-  //   type: 'confirm'
-  //   ,name: 'modernizr'
-  //   ,message: 'Will you be using Modernizr?'
-  // }];
-
   this.prompt(prompts, function (answers) {
     var features = answers.features;
 
@@ -88,6 +74,9 @@ BeeweeGenerator.prototype.askFor = function askFor() {
   }.bind(this));
 };
 
+BeeweeGenerator.prototype.gruntfile = function gruntfile () {
+  this.template('Gruntfile.js');
+}
 
 BeeweeGenerator.prototype.app = function app() {
 
@@ -114,7 +103,7 @@ BeeweeGenerator.prototype.app = function app() {
 };
 
 BeeweeGenerator.prototype.projectfiles = function projectfiles() {
-  this.copy('Gruntfile.js', 'Gruntfile.js');
+
   this.copy('editorconfig', '.editorconfig');
   this.copy('jshintrc', '.jshintrc');
   this.copy('bowerrc', '.bowerrc');
