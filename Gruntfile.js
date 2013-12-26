@@ -41,21 +41,17 @@ module.exports = function (grunt) {
    ,watch: {
 
       gruntfile: {
-        files: '<%= jshint.gruntfile.src %>'
+        files: '<%%= jshint.gruntfile.src %>'
        ,tasks: ['jshint:gruntfile']
       }
 
      ,generator: {
-        files: '<%= jshint.generator.src %>'
+        files: '<%%= jshint.generator.src %>'
        ,tasks: ['jshint:generator']
       }
     }
   });
 
-  // These plugins provide necessary tasks.
-  // grunt.loadNpmTasks('grunt-contrib-jshint');
-  // grunt.loadNpmTasks('grunt-contrib-watch');
-  // grunt.loadNpmTasks('grunt-contrib-copy');
 
   // Default task.
   grunt.registerTask('default', ['jshint', 'watch']);
