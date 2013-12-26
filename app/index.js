@@ -27,10 +27,6 @@ BeeweeGenerator = module.exports = function BeeweeGenerator(args, options, confi
 
   this.options = options;
 
-  // this.on('end', function () {
-  //   this.installDependencies({ skipInstall: options['skip-install'] });
-  // });
-
   this.pkg = JSON.parse(this.readFileAsString(path.join(__dirname, '../package.json')));
 };
 
@@ -78,6 +74,27 @@ BeeweeGenerator.prototype.gruntfile = function gruntfile () {
   this.template('Gruntfile.js');
 }
 
+BeeweeGenerator.prototype.packageJSON = function packageJSON () {
+  this.template('_package.json', 'package.json');
+}
+
+BeeweeGenerator.prototype.git = function git () {
+  this.copy('gitignore', '.gitignore');
+}
+
+BeeweeGenerator.prototype.bower = function bower () {
+  this.copy('bowerrc', '.bowerrc');
+  this.template('_bower.json', 'bower.json');
+}
+
+BeeweeGenerator.prototype.jshint = function jshint () {
+  this.copy('jshintrc', '.jshintrc');
+}
+
+BeeweeGenerator.prototype.editorConfig = function editorConfig () {
+  this.copy('editorconfig', '.editorconfig');
+}
+
 BeeweeGenerator.prototype.app = function app() {
 
   // Create project directories
@@ -86,26 +103,26 @@ BeeweeGenerator.prototype.app = function app() {
   this.mkdir('app/img');
   this.mkdir('app/js');
 
-  // If the user requires inuit.css, copy it over
-  if ( this.inuit === true ) {
-    this.directory('inuit.css', 'app/scss/inuit.css');
-  }
+  this.directory('inuit.css', 'app/scss/inuit.css');
 
   // If the user requires modernizr, copy it over
   if ( this.modernizr === true ) {
     this.directory('modernizr', 'app/js/lib/vendor/modernizr');
   }
 
-  this.template('_package.json', 'package.json');
-  this.template('_bower.json', 'bower.json');
   this.template('_index.html', 'app/index.html');
-
 };
 
-BeeweeGenerator.prototype.projectfiles = function projectfiles() {
+BeeweeGenerator.prototype.install = function install () {
+  if (this.options['skip-install']) {
+    return;
+  }
 
-  this.copy('editorconfig', '.editorconfig');
-  this.copy('jshintrc', '.jshintrc');
-  this.copy('bowerrc', '.bowerrc');
-  this.copy('gitignore', '.gitignore');
-};
+  var done = this.async();
+
+  this.installDependencies({
+    skipMessage: this.options['skip-install-message'],
+    skipInstall: this.options['skip-install'],
+    callback: done
+  });
+}
